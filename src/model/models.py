@@ -20,5 +20,5 @@ class Todos(Base):
     description = Column(String, nullable=False)
     owner_id = Column(Integer, ForeignKey(
         "users.id", ondelete="CASCADE"), nullable=False)
-    owner = relationship("users")
+    owner = relationship("User")
     created_at = Column(TIMESTAMP(timezone=True), server_default=text("now()"))

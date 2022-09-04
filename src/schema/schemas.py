@@ -35,8 +35,12 @@ class CreateTodo(TodoBase):
 
 
 class Todo(TodoBase):
+    id: int
     owner_id: int
     owner: User
+
+    class Config:
+        orm_mode = True
 
 
 class Token(BaseModel):
