@@ -1,4 +1,6 @@
+from dataclasses import dataclass
 from datetime import datetime
+from typing import List, Optional
 from pydantic import BaseModel
 
 
@@ -33,4 +35,19 @@ class CreateTodo(TodoBase):
 
 
 class Todo(TodoBase):
-    pass
+    owner_id: int
+    owner: User
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+    class Config:
+        orm_mode = True
+
+
+class TokenCreate:
+    def __init__(self, access_token: str, token_type: str) -> None:
+        self.access_token = access_token
+        self.token_type = token_type
