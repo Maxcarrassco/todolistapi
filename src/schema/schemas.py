@@ -37,7 +37,7 @@ class CreateTodo(TodoBase):
 
 class Todo(TodoBase):
     id: int
-    iscompleted: bool
+    is_completed: bool
     owner_id: int
     owner: User
 

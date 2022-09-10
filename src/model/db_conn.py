@@ -1,19 +1,8 @@
-import os
 from typing import Optional
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from src.env import setting
-
-
-def get_env(name) -> str:
-
-    try:
-        return os.environ[name]
-
-    except KeyError:
-        message = f"Expected environment variable {name} not set."
-        raise Exception(message)
 
 
 def get_db_uri() -> str:

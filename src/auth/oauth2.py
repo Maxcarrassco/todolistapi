@@ -1,7 +1,6 @@
 from jose import JWTError, jwt
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
-from src.model.db_conn import get_env
 from datetime import datetime, timedelta
 from src.env import setting
 

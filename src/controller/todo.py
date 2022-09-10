@@ -13,9 +13,9 @@ router = APIRouter(
 
 
 @router.get('/', response_model=List[schemas.Todo])
-def get_all_todo(db: Session = Depends(get_db), user_id: int = Depends(auth.get_active_user), limit: int = 20, skip: int = 0, search: str = ""):
+def get_all_todo(db: Session = Depends(get_db), user_id: int = Depends(auth.get_active_user), limit: int = 20, skip: int = 0):
     todos = db.query(models.Todos).filter(
-        models.Todos.owner_id == user_id).filter(models.Todos.title.like(search)).limit(limit).offset(skip).all()
+        models.Todos.owner_id == user_id).limit(limit).offset(skip).all()
     return todos
 
 
