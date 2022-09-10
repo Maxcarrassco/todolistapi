@@ -20,8 +20,6 @@ app.include_router(todo.router)
 app.include_router(auth.router)
 
 
-app.get('/')
-
-
+@app.get('/')
 def home():
     return {"deployed": True}
