@@ -1,6 +1,7 @@
 from fastapi import APIRouter, HTTPException, status, Response, Depends
 from src.schema import schemas
 from sqlalchemy.orm import Session
+from typing import List
 from src.model import models
 from src.model.db_conn import get_db
 from src.auth import auth
@@ -11,10 +12,10 @@ router = APIRouter(
 )
 
 
-@router.get('/', response_model=schemas.Todo)
-def get_all_todo(db: Session = Depends(get_db), user_id: int = Depends(auth.get_active_user)):
+@router.get('/', response_model=List[schemas.Todo])
+def get_all_todo(db: Session = Depends(get_db), user_id: int = Depends(auth.get_active_user), limit: int = 20, skip: int = 0, search: str = ""):
     todos = db.query(models.Todos).filter(
-        models.Todos.owner_id == user_id).all()
+        models.Todos.owner_id == user_id).filter(models.Todos.title.like(search)).limit(limit).offset(skip).all()
     return todos
 
 

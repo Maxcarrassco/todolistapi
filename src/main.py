@@ -6,7 +6,6 @@ from src.model.db_conn import engine
 from src.controller import user, todo
 from src.auth import auth
 
-models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 

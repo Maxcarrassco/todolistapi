@@ -6,6 +6,7 @@ from pydantic import BaseModel
 
 class UserSchema(BaseModel):
     username: str
+    email: str
 
 
 class CreateUser(UserSchema):
@@ -36,6 +37,7 @@ class CreateTodo(TodoBase):
 
 class Todo(TodoBase):
     id: int
+    iscompleted: bool
     owner_id: int
     owner: User
 

@@ -3,6 +3,7 @@ from typing import Optional
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+from src.env import setting
 
 
 def get_env(name) -> str:
@@ -17,10 +18,10 @@ def get_env(name) -> str:
 
 def get_db_uri() -> str:
 
-    POSTGRES_URL = get_env("POSTGRES_URL")
-    POSTGRES_USER = get_env("POSTGRES_USER")
-    POSTGRES_PASSWORD = get_env("POSTGRES_PASSWORD")
-    POSTGRES_DB = get_env("POSTGRES_DB")
+    POSTGRES_URL = setting.POSTGRES_URL
+    POSTGRES_USER = setting.POSTGRES_USER
+    POSTGRES_PASSWORD = setting.POSTGRES_PASSWORD
+    POSTGRES_DB = setting.POSTGRES_DB
 
     DB_URL = f'postgresql+psycopg2://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_URL}/{POSTGRES_DB}'
 
