@@ -18,8 +18,3 @@ app.add_middleware(
 app.include_router(user.router)
 app.include_router(todo.router)
 app.include_router(auth.router)
-
-
-@app.get('/')
-def home():
-    return {"deployed": True}

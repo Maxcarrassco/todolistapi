@@ -29,6 +29,7 @@ class User(UserSchema):
 class TodoBase(BaseModel):
     title: str
     description: str
+    is_completed: Optional[bool]
 
 
 class CreateTodo(TodoBase):
